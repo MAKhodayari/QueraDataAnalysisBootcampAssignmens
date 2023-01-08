@@ -10,9 +10,8 @@ n = len(states)
 mu = n * p
 sigma = np.sqrt(n * p * q)
 threshold = abs(norm.ppf((1 - margin) / 2))
-lower = - threshold * sigma + mu
-upper = threshold * sigma + mu
-if lower < sum(states) < upper:
+lower = ((- threshold * sigma) / np.sqrt(n)) + mu
+if lower < sum(states):
     print('ACCEPT')
 else:
     print('REJECT')
